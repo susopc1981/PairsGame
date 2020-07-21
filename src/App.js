@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import SelectSkill from "./components/SelectSkill";
 import Table from "./components/Table";

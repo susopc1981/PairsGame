@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "./Image";
 import TableRow from "./TableRow";
 
 class Table extends React.Component {
@@ -9,8 +8,14 @@ class Table extends React.Component {
     this.timeout = 0;
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({ show: [], shown: 0, completed: [], showkey: [] });
+      this.timeout = 0;
+    }
+  }
+
   HandleOnClickPhoto = (id, key) => {
-    console.log(id, key);
     if (this.state.shown === 0) {
       this.setState({
         ...this.state,
@@ -20,6 +25,8 @@ class Table extends React.Component {
       });
       return;
     }
+    const data = this.state.completed.find((value) => value === id);
+    if (this.state.show[0] === id || data) return;
     if (this.state.shown === 1) {
       if (key === this.state.showkey[0]) {
         this.setState({
@@ -29,6 +36,7 @@ class Table extends React.Component {
           show: [],
           showkey: [],
         });
+
         return;
       }
       this.setState({

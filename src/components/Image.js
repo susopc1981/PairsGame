@@ -13,12 +13,13 @@ class Image extends React.Component {
           id={this.props.id}
         >
           {!data && !paired ? (
-            <img src="negro.jpg" width="150px" key={this.props.src} />
+            <img src="negro.jpg" width="150px" key={this.props.src} alt="" />
           ) : (
             <img
               src={this.props.src + ".jpg"}
               width="150px"
               key={this.props.src}
+              alt=""
             />
           )}
         </td>
